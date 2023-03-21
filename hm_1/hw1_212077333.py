@@ -99,12 +99,8 @@ def calc(expression):
             if int(i+1)==int(len(lst)):
                 continue
             else:
-                if lst[i+1]=="!":
-                    continue
-                else:
-                    word =word+lst[i+1]
+                word =word+lst[i+1]
     return str(word)
-
 
 
 
