@@ -1,6 +1,5 @@
-res = 0 
-for i in range(10):
-    if i%3==0:
-        continue
-    res +=i
-print(res)
+lst =["!",2,3,"Fff"]
+print(id(lst))
+lst[0]=6
+print(lst)
+print(id(lst))
