@@ -567,14 +567,26 @@ class Binary_search_tree(Binary_search_tree):
             if i in lst2 :
                 return i
         
-        
-
+class Binary_search_tree(Binary_search_tree):
+    def first_connecting_node(self, n1, n2):        
+        pass
+    def env_first(t,n1,n2):
+        if t.val <n1.val and n2.val:
+            t.env_first(t.right)
 
 ##############
 # QUESTION 5 #
 ##############
 def prefix_suffix_overlap(lst, k):
-    pass  # replace this with your code
+    ret_list = []
+    for ls in range(len(lst)) : # i get all the lists 
+        for i in range(len(lst)):
+            if i==ls:
+                continue
+            if lst[ls][:k] == lst[i][-k:]:
+                ret_list.append((ls,i))
+    return ret_list
+
 
 
 class Dict:
@@ -596,12 +608,39 @@ class Dict:
 
     def find(self, key):
         """ returns ALL values of key as a list, empty list if none """
-        pass  # replace this with your code
+        lst=[]
+        Dict_key = self.hash_mod(key)
+        for i in self.table[Dict_key] :
+            if i[0] == key:
+                lst.append(i)
+        return lst
 
 
 def prefix_suffix_overlap_hash1(lst, k):
-    pass  # replace this with your code
+    lstr=[]
+    d1=Dict(len(lst))
+    for i in range(len(lst)) :
+        d1.insert(lst[i][:k],i)
+    print(d1)
+    for i in range(len(lst)):
+        z=d1.find(lst[i][-k:])
+        print(z)
+        if len(z)!=0:
+            for j in range(len(z)):
+                if i == z[j][1]:
+                    continue 
+                lstr.append((i,z[j][1]))
+    return lstr
+d = Dict(3)
+d.insert("a", 56)
+d.insert("a", 34)
+if sorted(d.find("a")) != sorted([56, 34]) or d.find("b") != []:
+    print("5 - error in Dict.find")
 
+lst = ["abcd", "cdab", "aaaa", "bbbb", "abff"]
+k = 2
+if sorted(prefix_suffix_overlap_hash1(lst, k)) != sorted([(0, 1), (1, 0), (4, 1)]):
+    print("5 - error in prefix_suffix_overlap_hash1")
 ##############
 # QUESTION 6 #
 ##############
