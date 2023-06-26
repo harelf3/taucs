@@ -566,7 +566,22 @@ class Binary_search_tree(Binary_search_tree):
         for i in lst1[::-1]:
             if i in lst2 :
                 return i
-        
+class Binary_search_tree(Binary_search_tree):
+    def first_connecting_node(self, n1, n2):
+        root =self.root
+        return first_node(root,n1,n2)
+            
+
+def first_node(root,n1,n2):
+    if root.key < n1 and root.key < n2 :
+        node =root.right
+        return first_node(node,n1,n2)
+    if root.key > n1 and root.key > n2 : 
+        node = root.left 
+        return first_node(node,n1,n2)
+    else : 
+        return root 
+
 class Binary_search_tree(Binary_search_tree):
     def first_connecting_node(self, n1, n2):        
         pass
